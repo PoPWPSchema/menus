@@ -13,9 +13,12 @@ class MenuLocationEnumStringScalarTypeResolver extends AbstractEnumStringScalarT
         return 'MenuLocationEnumString';
     }
 
-    public function getEnumStringTypeDescription(): ?string
+    public function getTypeDescription(): string
     {
-        return $this->__('Menu Locations', 'menus');
+        return sprintf(
+            $this->__('Menu Locations, with possible values: `"%s"`.', 'menus'),
+            implode('"`, `"', $this->getConsolidatedPossibleValues())
+        );
     }
 
     /**
